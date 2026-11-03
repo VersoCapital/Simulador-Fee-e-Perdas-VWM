@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/radii.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/elevation.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/semantic.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/tokens/base.css">
+  <link rel="stylesheet" href="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/styles.css">
+  <script src="_ds/verso-wealth-design-system-7cc1f519-7456-420e-9e7c-6e3639b54ed2/_ds_bundle.js"></script>
+  <style>body{margin:0;background:var(--sand-100);} a{color:var(--text-link);} a:hover{color:var(--text-link-hover);} label input{min-width:0;width:100%;} [role=tab]{white-space:nowrap;flex-shrink:0;padding-top:4px !important;}</style>
+</helmet>
+<div style="min-height:100vh;background:var(--sand-100);font-family:var(--font-sans);color:var(--text-primary);">
+  <header style="background:var(--navy-600);color:#fff;position:relative;overflow:hidden;">
+    <img src="assets/photos/mar.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 75%;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, rgba(53,73,94,.42) 0%, rgba(53,73,94,.6) 55%, rgba(53,73,94,.88) 100%);"></div>
+    <div style="position:relative;max-width:1240px;margin:0 auto;padding:40px 32px 0;display:flex;flex-direction:column;gap:48px;">
+      <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Logo" variant="white" width="132px" base-path="" hint-size="132px,44px"></x-import>
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:760px;">
+        <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold-400);">Simuladores · Perdas · Custos · Alocação</div>
+        <div style="width:56px;height:1px;background:var(--gold-400);"></div>
+        <h1 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:var(--text-display-3);line-height:var(--leading-display);letter-spacing:var(--tracking-display);text-wrap:pretty;">O que uma perda e uma taxa custam no longo prazo.</h1>
+        
+      </div>
+      <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Tabs" items="{{ tabs }}" value="{{ tab }}" on-change="{{ setTab }}" on="inverse" style="width:100%;" hint-size="100%,40px"></x-import>
+    </div>
+  </header>
+
+  <main style="max-width:1240px;margin:0 auto;padding:56px 32px 96px;display:flex;flex-direction:column;gap:48px;">
+
+    <sc-if value="{{ isT1 }}" hint-placeholder-val="{{ true }}">
+      <section data-screen-label="01 Perda definitiva" style="display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:720px;">
+          <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-accent);">01 · Perda definitiva</div>
+          <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:var(--text-h1);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);">Juros compostos com e sem prejuízo.</h2>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+          <div style="flex:1 1 320px;max-width:420px;min-width:0;box-sizing:border-box;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:28px;display:flex;flex-direction:column;gap:20px;">
+            <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Premissas</div>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Capital inicial" prefix="R$" value="{{ v.capital }}" on-change="{{ set.capital }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Taxa de juros mensal" suffix="% a.m." value="{{ v.taxaM }}" on-change="{{ set.taxaM }}" hint="{{ t1.anualHint }}" hint-size="100%,64px"></x-import>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;">
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Horizonte" suffix="anos" value="{{ v.horiz }}" on-change="{{ set.horiz }}" hint-size="100%,64px"></x-import>
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Ano da perda" value="{{ v.anoPerda }}" on-change="{{ set.anoPerda }}" hint-size="100%,64px"></x-import>
+            </div>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Tamanho da perda" suffix="% do patrimônio" value="{{ v.perda }}" on-change="{{ set.perda }}" hint-size="100%,64px"></x-import>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Aporte mensal (opcional)" prefix="R$" value="{{ v.aporte }}" on-change="{{ set.aporte }}" hint-size="100%,64px"></x-import>
+          </div>
+          <div style="flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px;">
+            <div style="background:var(--navy-600);color:#fff;border-radius:var(--radius-card);padding:36px;display:flex;flex-direction:column;gap:28px;">
+              <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold-400);">Perda definitiva em {{ t1.h }} anos</div>
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t1.perdaDef }}" label="Cenário A − Cenário B" on="inverse" size="lg" hint-size="100%,90px"></x-import>
+              <p style="margin:0;font-size:var(--text-lead);font-weight:300;line-height:1.5;max-width:52ch;">Cada R$ 1 perdido no ano {{ t1.ano }} vira <span style="color:var(--gold-400);">R$ {{ t1.mult }}</span> no horizonte — {{ t1.xcap }} vezes o capital inicial.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t1.a }}" label="Sem perda (A)" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t1.b }}" label="Com perda (B)" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t1.direta }}" label="Perda direta no ano" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t1.pctA }}" label="Em % do cenário A" size="sm" hint-size="100%,60px"></x-import></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:28px;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px;">
+            <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Patrimônio ano a ano</div>
+            <div style="display:flex;gap:24px;font-size:var(--text-caption);color:var(--text-secondary);">
+              <span style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:2px;background:var(--navy-600);"></span>A: sem perda</span>
+              <span style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:2px;background:var(--gold-500);"></span>B: com perda</span>
+            </div>
+          </div>
+          <div style="position:relative;height:300px;margin-left:72px;margin-bottom:24px;">
+            <sc-for list="{{ c1.yTicks }}" as="tk" hint-placeholder-count="0">
+              <div style="position:absolute;left:0;right:0;top:{{ tk.top }};border-top:1px solid var(--grey-100);"></div>
+              <div style="position:absolute;left:-72px;width:64px;text-align:right;top:{{ tk.top }};transform:translateY(-50%);font-size:var(--text-micro);color:var(--text-muted);font-variant-numeric:tabular-nums;">{{ tk.label }}</div>
+            </sc-for>
+            <sc-for list="{{ c1.xTicks }}" as="tk" hint-placeholder-count="0">
+              <div style="position:absolute;bottom:-22px;left:{{ tk.left }};transform:translateX(-50%);font-size:var(--text-micro);color:var(--text-muted);">{{ tk.label }}</div>
+            </sc-for>
+            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;">
+              <sc-for list="{{ c1.paths }}" as="p" hint-placeholder-count="0">
+                <path d="{{ p.d }}" fill="none" stroke="{{ p.color }}" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+              </sc-for>
+            </svg>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+          <div style="max-height:520px;overflow:auto;">
+            <table style="width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:var(--text-body-sm);">
+              <thead>
+                <tr>
+                  <sc-for list="{{ t1.heads }}" as="h" hint-placeholder-count="6">
+                    <th style="position:sticky;top:0;background:var(--sand-200);text-align:right;padding:14px 20px;font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle);white-space:nowrap;">{{ h }}</th>
+                  </sc-for>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ t1.rows }}" as="r" hint-placeholder-count="8">
+                  <tr style="background:{{ r.bg }};">
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);color:var(--text-secondary);">{{ r.ano }}</td>
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.a }}</td>
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.b }}</td>
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);color:var(--negative-600);">{{ r.d }}</td>
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.dp }}</td>
+                    <td style="padding:10px 20px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.dc }}</td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:88ch;font-size:var(--text-micro);line-height:1.6;color:var(--text-muted);">
+          <div style="font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;">Notas e premissas</div>
+          <div>Hipóteses ilustrativas, não projeção de mercado. Juros compostos mensais, capitalização anual = (1 + taxa mensal)^12; sem impostos, taxas ou inflação (valores nominais).</div>
+          <div>A perda é aplicada sobre o saldo ao final do ano indicado. Sem aportes, o resultado é o mesmo se aplicada no início ou no fim do ano. Aportes mensais são depositados ao final de cada mês e não são afetados pela perda.</div>
+          <div>O horizonte altera os resultados; a tabela e o gráfico sempre mostram 40 anos. Rentabilidade passada não é garantia de resultados futuros.</div>
+        </div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT2 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="02 Previsibilidade" style="display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:760px;">
+          <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-accent);">02 · Previsibilidade de custos</div>
+          <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:var(--text-h1);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);">Fee based vs. comissionamento.</h2>
+          <p style="margin:0;color:var(--text-secondary);line-height:var(--leading-body);">Simulação de {{ t2.n }} anos — impacto dos custos na rentabilidade e no patrimônio futuro.</p>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start;">
+          <div style="flex:1 1 320px;max-width:420px;min-width:0;box-sizing:border-box;background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:28px;display:flex;flex-direction:column;gap:20px;">
+            <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Premissas</div>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Valor presente" prefix="R$" value="{{ v.vp }}" on-change="{{ set.vp }}" hint-size="100%,64px"></x-import>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;">
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Rentab. bruta" suffix="% a.a." value="{{ v.bruta }}" on-change="{{ set.bruta }}" hint-size="100%,64px"></x-import>
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Horizonte" suffix="anos" value="{{ v.anos2 }}" on-change="{{ set.anos2 }}" hint-size="100%,64px"></x-import>
+            </div>
+            <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Taxa fee based (fixa)" suffix="% a.a." value="{{ v.fee }}" on-change="{{ set.fee }}" hint-size="100%,64px"></x-import>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;">
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Comissão normal" suffix="% a.a." value="{{ v.comN }}" on-change="{{ set.comN }}" hint-size="100%,64px"></x-import>
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Comissão alta" suffix="% a.a." value="{{ v.comA }}" on-change="{{ set.comA }}" hint-size="100%,64px"></x-import>
+            </div>
+            <div style="font-size:var(--text-caption);line-height:1.5;color:var(--text-secondary);">Clique na taxa de comissão de qualquer ano, na tabela, para alternar entre normal e alta. Anos de comissão alta: {{ t2.altos }}.</div>
+          </div>
+          <div style="flex:2 1 520px;min-width:0;display:flex;flex-direction:column;gap:24px;">
+            <div style="background:var(--navy-600);color:#fff;border-radius:var(--radius-card);padding:36px;display:flex;flex-direction:column;gap:28px;">
+              <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--gold-400);">Diferença de patrimônio ao final</div>
+              <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t2.difPat }}" label="Fee based − comissão" on="inverse" size="lg" hint-size="100%,90px"></x-import>
+              <p style="margin:0;font-size:var(--text-lead);font-weight:300;line-height:1.5;max-width:52ch;">Com custo fixo, o cliente sabe o que paga todos os anos — e termina com <span style="color:var(--gold-400);">{{ t2.difPat }}</span> a mais.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border-subtle);border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t2.patF }}" label="Patrimônio · fee based" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t2.patC }}" label="Patrimônio · comissão" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t2.custF }}" label="Custos pagos · fee" size="sm" hint-size="100%,60px"></x-import></div>
+              <div style="background:#fff;padding:24px;"><x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Stat" value="{{ t2.custC }}" label="Custos pagos · comissão" size="sm" hint-size="100%,60px"></x-import></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);padding:28px;display:flex;flex-direction:column;gap:20px;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:16px;">
+            <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Custo anual pago</div>
+            <div style="display:flex;gap:24px;font-size:var(--text-caption);color:var(--text-secondary);">
+              <span style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:2px;background:var(--navy-600);"></span>Fee based</span>
+              <span style="display:flex;align-items:center;gap:8px;"><span style="width:20px;height:2px;background:var(--gold-500);"></span>Comissão</span>
+            </div>
+          </div>
+          <div style="position:relative;height:300px;margin-left:72px;margin-bottom:24px;">
+            <sc-for list="{{ c2.yTicks }}" as="tk" hint-placeholder-count="0">
+              <div style="position:absolute;left:0;right:0;top:{{ tk.top }};border-top:1px solid var(--grey-100);"></div>
+              <div style="position:absolute;left:-72px;width:64px;text-align:right;top:{{ tk.top }};transform:translateY(-50%);font-size:var(--text-micro);color:var(--text-muted);font-variant-numeric:tabular-nums;">{{ tk.label }}</div>
+            </sc-for>
+            <sc-for list="{{ c2.xTicks }}" as="tk" hint-placeholder-count="0">
+              <div style="position:absolute;bottom:-22px;left:{{ tk.left }};transform:translateX(-50%);font-size:var(--text-micro);color:var(--text-muted);">{{ tk.label }}</div>
+            </sc-for>
+            <svg viewBox="0 0 1000 300" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%;overflow:visible;">
+              <sc-for list="{{ c2.paths }}" as="p" hint-placeholder-count="0">
+                <path d="{{ p.d }}" fill="none" stroke="{{ p.color }}" stroke-width="2" vector-effect="non-scaling-stroke"></path>
+              </sc-for>
+            </svg>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;">
+          <div style="max-height:560px;overflow:auto;">
+            <table style="width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:var(--text-body-sm);">
+              <thead>
+                <tr>
+                  <sc-for list="{{ t2.heads }}" as="h" hint-placeholder-count="10">
+                    <th style="position:sticky;top:0;background:var(--sand-200);text-align:right;padding:14px 16px;font-size:var(--text-micro);font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle);line-height:1.4;vertical-align:bottom;">{{ h }}</th>
+                  </sc-for>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{ t2.rows }}" as="r" hint-placeholder-count="8">
+                  <tr>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);color:var(--text-secondary);">{{ r.ano }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.fee }}</td>
+                    <td style="padding:6px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">
+                      <button onClick="{{ r.toggle }}" title="Alternar comissão normal / alta" style="appearance:none;border:1px solid {{ r.cBorder }};background:{{ r.cBg }};color:var(--text-primary);border-radius:var(--radius-control);padding:4px 10px;font:inherit;font-variant-numeric:tabular-nums;cursor:pointer;">{{ r.com }}</button>
+                    </td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.lf }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.lc }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.pf }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.pc }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.cf }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ r.cc }}</td>
+                    <td style="padding:10px 16px;text-align:right;border-bottom:1px solid var(--grey-100);color:var(--positive-600);">{{ r.dif }}</td>
+                  </tr>
+                </sc-for>
+                <tr style="background:var(--sand-100);font-weight:500;">
+                  <td style="padding:14px 16px;text-align:right;font-size:var(--text-micro);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);" colspan="5">Total / final</td>
+                  <td style="padding:14px 16px;text-align:right;">{{ t2.patF }}</td>
+                  <td style="padding:14px 16px;text-align:right;">{{ t2.patC }}</td>
+                  <td style="padding:14px 16px;text-align:right;">{{ t2.custF }}</td>
+                  <td style="padding:14px 16px;text-align:right;">{{ t2.custC }}</td>
+                  <td style="padding:14px 16px;text-align:right;color:var(--positive-600);">{{ t2.difPat }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div style="max-width:88ch;font-size:var(--text-micro);line-height:1.6;color:var(--text-muted);">Diferença total em custos pagos: {{ t2.difCust }}. Custo anual calculado sobre o patrimônio do início de cada ano. Hipóteses ilustrativas; rentabilidade passada não é garantia de resultados futuros.</div>
+      </section>
+    </sc-if>
+
+    <sc-if value="{{ isT3 }}" hint-placeholder-val="{{ false }}">
+      <section data-screen-label="03 Melhor RxR" style="display:flex;flex-direction:column;gap:40px;">
+        <div style="display:flex;flex-direction:column;gap:12px;max-width:760px;">
+          <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-accent);">03 · Melhor risco × retorno</div>
+          <h2 style="margin:0;font-family:var(--font-display);font-weight:400;font-size:var(--text-h1);line-height:var(--leading-heading);letter-spacing:var(--tracking-heading);text-wrap:pretty;">Uma alocação melhor paga parte do fee.</h2>
+          <p style="margin:0;color:var(--text-secondary);line-height:var(--leading-body);">Premissa: melhor alocação, evitando perdas definitivas que impactam a rentabilidade.</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:24px;">
+          <sc-for list="{{ t3 }}" as="s" hint-placeholder-count="2">
+            <div style="background:#fff;border:1px solid var(--border-subtle);border-radius:var(--radius-card);overflow:hidden;display:flex;flex-direction:column;">
+              <div style="padding:28px 28px 24px;display:flex;flex-direction:column;gap:20px;border-bottom:1px solid var(--border-subtle);">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;">
+                  <div style="font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Cenário {{ s.nome }}</div>
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Badge" tone="{{ s.tone }}" hint-size="auto,22px">{{ s.badge }}</x-import>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:16px;">
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Selic" suffix="%" size="sm" value="{{ s.selic }}" on-change="{{ s.setSelic }}" hint-size="100%,56px"></x-import>
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="% CDI atual" suffix="%" size="sm" value="{{ s.cdiA }}" on-change="{{ s.setCdiA }}" hint-size="100%,56px"></x-import>
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="% CDI Verso" suffix="%" size="sm" value="{{ s.cdiV }}" on-change="{{ s.setCdiV }}" hint-size="100%,56px"></x-import>
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="ROA atual" suffix="% a.a." size="sm" value="{{ s.roa }}" on-change="{{ s.setRoa }}" hint-size="100%,56px"></x-import>
+                  <x-import component-from-global-scope="VersoWealthDesignSystem_7cc1f5.Input" label="Fee based" suffix="% a.a." size="sm" value="{{ s.fee }}" on-change="{{ s.setFee }}" hint-size="100%,56px"></x-import>
+                </div>
+              </div>
+              <table style="width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:var(--text-body-sm);">
+                <thead>
+                  <tr>
+                    <th style="text-align:left;padding:12px 28px;background:var(--sand-200);font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);"></th>
+                    <th style="text-align:right;padding:12px 16px;background:var(--sand-200);font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">% CDI</th>
+                    <th style="text-align:right;padding:12px 16px;background:var(--sand-200);font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Retorno total</th>
+                    <th style="text-align:right;padding:12px 28px;background:var(--sand-200);font-size:var(--text-micro);font-weight:500;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--text-secondary);">Acima da Selic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:12px 28px;border-bottom:1px solid var(--grey-100);color:var(--text-secondary);">Atual</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.cdiAf }}</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.retA }}</td>
+                    <td style="padding:12px 28px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.excA }}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 28px;border-bottom:1px solid var(--grey-100);color:var(--text-secondary);">Verso</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.cdiVf }}</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.retV }}</td>
+                    <td style="padding:12px 28px;text-align:right;border-bottom:1px solid var(--grey-100);">{{ s.excV }}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div style="padding:20px 28px;display:grid;grid-template-columns:1fr auto;row-gap:10px;column-gap:16px;font-size:var(--text-body-sm);font-variant-numeric:tabular-nums;">
+                <span style="color:var(--text-secondary);">Ganho extra de rentabilidade</span><span style="text-align:right;color:var(--positive-600);">− {{ s.dif }}</span>
+                <span style="color:var(--text-secondary);">ROA atual (custo que deixa de existir)</span><span style="text-align:right;color:var(--positive-600);">− {{ s.roaf }}</span>
+                <span style="color:var(--text-secondary);">Fee based anual</span><span style="text-align:right;">+ {{ s.feef }}</span>
+                <span style="border-top:1px solid var(--border-strong);padding-top:10px;font-weight:500;">Saldo para o cliente</span><span style="border-top:1px solid var(--border-strong);padding-top:10px;text-align:right;font-weight:500;color:{{ s.saldoColor }};">{{ s.saldo }}</span>
+              </div>
+              <div style="margin-top:auto;background:var(--navy-600);color:#fff;padding:28px;display:flex;flex-direction:column;gap:12px;">
+                <div style="width:40px;height:1px;background:var(--gold-400);"></div>
+                <p style="margin:0;font-size:var(--text-lead);font-weight:300;line-height:1.5;text-wrap:pretty;">{{ s.frase1 }} <span style="color:var(--gold-400);">{{ s.destaque }}</span> {{ s.frase2 }}</p>
+                <div style="font-size:var(--text-caption);color:var(--text-on-inverse-muted);">Fee based mensal ÷ juros pós mensal: {{ s.razao }}</div>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="max-width:88ch;font-size:var(--text-micro);line-height:1.6;color:var(--text-muted);">Sem considerar nenhum retorno extra por menores taxas e menores impostos (eficiência fiscal). Rentabilidade passada não é garantia de resultados futuros.</div>
+      </section>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const P = s => { s = String(s ?? '').trim().replace(/\s/g, ''); if (s.includes(',')) s = s.replace(/\./g, '').replace(',', '.'); else if (/^-?\d{1,3}(\.\d{3})+$/.test(s)) s = s.replace(/\./g, ''); const v = parseFloat(s); return isFinite(v) ? v : 0; };
+const nf = (v, d) => v.toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
+const brl = v => 'R$ ' + nf(v, 0);
+const pct = (v, d = 2) => nf(v * 100, d) + '%';
+const compact = v => { const a = Math.abs(v); return a >= 1e6 ? 'R$ ' + nf(v / 1e6, 1) + ' M' : a >= 1e3 ? 'R$ ' + nf(v / 1e3, 0) + ' mil' : 'R$ ' + nf(v, 0); };
+const NAVY = '#35495e', GOLD = '#cfa878';
+
+function chart(series, n) {
+  const all = series.flatMap(s => s.vals); const raw = Math.max(...all, 1);
+  const mag = Math.pow(10, Math.floor(Math.log10(raw))); const step = [1, 2, 2.5, 5, 10].map(k => k * mag / 2).find(s => raw / s <= 5) || mag;
+  const max = Math.ceil(raw / step) * step;
+  const yTicks = []; for (let v = 0; v <= max + 1e-9; v += step) yTicks.push({ label: compact(v), top: (100 - v / max * 100) + '%' });
+  const xTicks = []; const xs = n <= 30 ? 5 : 10; for (let i = 0; i <= n; i += xs) xTicks.push({ label: 'Ano ' + i, left: (i / n * 100) + '%' });
+  const paths = series.map(s => ({ color: s.color, d: s.vals.map((v, i) => (i ? 'L' : 'M') + (s.x0 + i) / n * 1000 + ' ' + (300 - v / max * 300)).join(' ') }));
+  return { yTicks, xTicks, paths };
+}
+
+class Component extends DCLogic {
+  state = {
+    tab: 't1',
+    v: { capital: '1.000.000', taxaM: '0,8', horiz: '40', anoPerda: '2', perda: '3', aporte: '0',
+      vp: '500.000', bruta: '13,5', anos2: '30', fee: '0,7', comN: '0,7', comA: '1,5' },
+    altos: [1, 3, 10, 12, 15, 18],
+    s3: [
+      { selic: '13,75', cdiA: '115', cdiV: '117', roa: '0,4', fee: '0,7' },
+      { selic: '13,75', cdiA: '105', cdiV: '110', roa: '0,2', fee: '0,7' },
+    ],
+  };
+  _val(e) { return e && e.target ? e.target.value : e; }
+  setV(k, e) { const val = this._val(e); this.setState(s => ({ v: { ...s.v, [k]: val } })); }
+  setS3(i, k, e) { const val = this._val(e); this.setState(s => ({ s3: s.s3.map((o, j) => j === i ? { ...o, [k]: val } : o) })); }
+  toggleAno(y) { this.setState(s => ({ altos: s.altos.includes(y) ? s.altos.filter(a => a !== y) : [...s.altos, y].sort((a, b) => a - b) })); }
+
+  calc1(v) {
+    const C = P(v.capital), m = P(v.taxaM) / 100, H = Math.min(40, Math.max(1, Math.round(P(v.horiz)))), L = Math.round(P(v.anoPerda)), p = P(v.perda) / 100, ap = P(v.aporte);
+    const g = Math.pow(1 + m, 12), fac = m === 0 ? 12 : (g - 1) / m;
+    const A = [C], B = [C];
+    for (let y = 1; y <= 40; y++) { A.push(A[y - 1] * g + ap * fac); B.push((B[y - 1] * g + ap * fac) * (1 - (y === L ? p : 0))); }
+    const a = A[H], b = B[H], def = a - b, direta = p * (A[L] || 0);
+    const heads = ['Ano', 'A: sem perda', 'B: com perda', 'Diferença', 'Dif. %', 'Dif. / capital'];
+    const rows = A.map((x, i) => ({ ano: i, a: brl(x), b: brl(B[i]), d: brl(x - B[i]), dp: pct(x ? (x - B[i]) / x : 0), dc: nf(C ? (x - B[i]) / C : 0, 2) + '×', bg: i === H ? 'var(--gold-100)' : i === L ? 'var(--sand-100)' : '#fff' }));
+    return {
+      t: { h: H, ano: L, a: brl(a), b: brl(b), perdaDef: brl(def), pctA: pct(a ? def / a : 0), xcap: nf(C ? def / C : 0, 2), direta: brl(direta), mult: nf(direta ? def / direta : 0, 2), anualHint: 'Equivale a ' + pct(g - 1) + ' ao ano', heads, rows },
+      c: chart([{ vals: A, color: NAVY, x0: 0 }, { vals: B, color: GOLD, x0: 0 }], 40),
+    };
+  }
+
+  calc2(v, altos) {
+    const PV = P(v.vp), r = P(v.bruta) / 100, fee = P(v.fee) / 100, cn = P(v.comN) / 100, ca = P(v.comA) / 100, N = Math.min(50, Math.max(1, Math.round(P(v.anos2))));
+    let F = PV, G = PV, sf = 0, sc = 0; const rows = [], cF = [], cC = [];
+    for (let y = 1; y <= N; y++) {
+      const hi = altos.includes(y), c = hi ? ca : cn;
+      const hf = F * fee, hc = G * c; F = F * (1 + r - fee); G = G * (1 + r - c); sf += hf; sc += hc; cF.push(hf); cC.push(hc);
+      rows.push({ ano: y, fee: pct(fee), com: pct(c), lf: pct(r - fee), lc: pct(r - c), pf: brl(F), pc: brl(G), cf: brl(hf), cc: brl(hc), dif: brl(F - G),
+        cBg: hi ? 'var(--gold-100)' : '#fff', cBorder: hi ? 'var(--gold-400)' : 'var(--border-subtle)', toggle: () => this.toggleAno(y) });
+    }
+    const alt = altos.filter(a => a <= N);
+    return {
+      t: { n: N, rows, heads: ['Ano', 'Fee based', 'Comissão no ano', 'Líq. fee', 'Líq. comissão', 'Patrimônio fee', 'Patrimônio comissão', 'Custo fee', 'Custo comissão', 'Diferença'],
+        patF: brl(F), patC: brl(G), custF: brl(sf), custC: brl(sc), difPat: brl(F - G), difCust: brl(sc - sf), altos: alt.length ? alt.join(', ') : 'nenhum' },
+      c: chart([{ vals: cF, color: NAVY, x0: 1 }, { vals: cC, color: GOLD, x0: 1 }], N),
+    };
+  }
+
+  calc3(s3) {
+    return s3.map((o, i) => {
+      const selic = P(o.selic) / 100, a = P(o.cdiA) / 100, b = P(o.cdiV) / 100, roa = P(o.roa) / 100, fee = P(o.fee) / 100;
+      const exA = a * selic - selic, exV = b * selic - selic, dif = exV - exA, saldo = fee - roa - dif;
+      const mensal = Math.pow(1 + selic, 1 / 12) - 1, maior = a ? b / a - 1 : 0, pos = saldo <= 0;
+      const set = k => e => this.setS3(i, k, e);
+      return {
+        nome: i ? 'B' : 'A', ...o,
+        setSelic: set('selic'), setCdiA: set('cdiA'), setCdiV: set('cdiV'), setRoa: set('roa'), setFee: set('fee'),
+        cdiAf: nf(a * 100, 0) + '%', cdiVf: nf(b * 100, 0) + '%', retA: pct(a * selic), retV: pct(b * selic), excA: pct(exA, 3), excV: pct(exV, 3),
+        dif: pct(dif, 3), roaf: pct(roa), feef: pct(fee), saldo: (saldo > 0 ? '+ ' : '− ') + pct(Math.abs(saldo), 3),
+        saldoColor: pos ? 'var(--positive-600)' : 'var(--text-primary)',
+        tone: pos ? 'positive' : 'neutral', badge: pos ? 'Net positivo para o cliente' : 'Custo líquido reduzido',
+        frase1: 'Com rentabilidade ' + pct(maior) + ' maior (' + nf(b * 100, 0) + '% vs ' + nf(a * 100, 0) + '% do CDI), o cliente',
+        destaque: pos ? 'passa a receber ' + pct(-saldo, 3) + ' ao ano' : 'paga de fato ' + pct(saldo, 3),
+        frase2: pos ? '— agrega valor ao patrimônio em vez de pagar ' + pct(fee) + '.' : 'em vez de ' + pct(fee) + ' — ' + pct(fee ? 1 - saldo / fee : 0, 1) + ' a menos.',
+        razao: pct(mensal ? saldo / mensal : 0),
+      };
+    });
+  }
+
+  renderVals() {
+    const { v, tab, altos, s3 } = this.state;
+    const set = {}; Object.keys(v).forEach(k => set[k] = e => this.setV(k, e));
+    const r1 = this.calc1(v), r2 = this.calc2(v, altos);
+    return {
+      tabs: [{ value: 't1', label: '01 · Perda definitiva' }, { value: 't2', label: '02 · Previsibilidade' }, { value: 't3', label: '03 · Melhor R×R' }],
+      tab, setTab: t => this.setState({ tab: t }), isT1: tab === 't1', isT2: tab === 't2', isT3: tab === 't3',
+      v, set, t1: r1.t, c1: r1.c, t2: r2.t, c2: r2.c, t3: this.calc3(s3),
+    };
+  }
+}
+</script>
+</body>
+</html>
